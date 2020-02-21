@@ -1,0 +1,1730 @@
+{
+    "Alexa::ASK::Skill": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::AmazonMQ::Broker": {
+        "Ref": "Id",
+        "GetAtt": [
+            "AmqpEndpoints",
+            "Arn",
+            "ConfigurationId",
+            "ConfigurationRevision",
+            "IpAddresses",
+            "MqttEndpoints",
+            "OpenWireEndpoints",
+            "StompEndpoints",
+            "WssEndpoints"
+        ]
+    },
+    "AWS::AmazonMQ::Configuration": {
+        "Ref": "Id",
+        "GetAtt": [
+            "Arn",
+            "Id",
+            "Revision"
+        ]
+    },
+    "AWS::AmazonMQ::ConfigurationAssociation": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::Amplify::App": {
+        "Ref": null,
+        "GetAtt": [
+            "AppId",
+            "AppName",
+            "Arn",
+            "DefaultDomain"
+        ]
+    },
+    "AWS::Amplify::Branch": {
+        "Ref": null,
+        "GetAtt": [
+            "Arn",
+            "BranchName"
+        ]
+    },
+    "AWS::Amplify::Domain": {
+        "Ref": null,
+        "GetAtt": [
+            "Arn",
+            "CertificateRecord",
+            "DomainName",
+            "DomainStatus",
+            "StatusReason"
+        ]
+    },
+    "AWS::ApiGateway::Account": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::ApiGateway::ApiKey": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::ApiGateway::Authorizer": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::ApiGateway::BasePathMapping": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::ApiGateway::ClientCertificate": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::ApiGateway::Deployment": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::ApiGateway::DocumentationPart": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::ApiGateway::DocumentationVersion": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::ApiGateway::DomainName": {
+        "Ref": "DomainName",
+        "GetAtt": [
+            "DistributionDomainName",
+            "DistributionHostedZoneId",
+            "RegionalDomainName",
+            "RegionalHostedZoneId"
+        ]
+    },
+    "AWS::ApiGateway::GatewayResponse": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::ApiGateway::Method": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::ApiGateway::Model": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::ApiGateway::RequestValidator": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::ApiGateway::Resource": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::ApiGateway::RestApi": {
+        "Ref": "Id",
+        "GetAtt": [
+            "RootResourceId"
+        ]
+    },
+    "AWS::ApiGateway::Stage": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::ApiGateway::UsagePlan": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::ApiGateway::UsagePlanKey": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::ApiGateway::VpcLink": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::ApiGatewayV2::Api": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::ApiGatewayV2::ApiMapping": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::ApiGatewayV2::Authorizer": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::ApiGatewayV2::Deployment": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::ApiGatewayV2::DomainName": {
+        "Ref": "DomainName",
+        "GetAtt": [
+            "RegionalDomainName",
+            "RegionalHostedZoneId"
+        ]
+    },
+    "AWS::ApiGatewayV2::Integration": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::ApiGatewayV2::IntegrationResponse": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::ApiGatewayV2::Model": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::ApiGatewayV2::Route": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::ApiGatewayV2::RouteResponse": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::ApiGatewayV2::Stage": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::ApplicationAutoScaling::ScalableTarget": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::ApplicationAutoScaling::ScalingPolicy": {
+        "Ref": "Arn",
+        "GetAtt": []
+    },
+    "AWS::AppMesh::Mesh": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "Arn",
+            "MeshName",
+            "Uid"
+        ]
+    },
+    "AWS::AppMesh::Route": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "Arn",
+            "MeshName",
+            "Uid",
+            "VirtualRouterName"
+        ]
+    },
+    "AWS::AppMesh::VirtualNode": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "Arn",
+            "MeshName",
+            "Uid",
+            "VirtualNodeName"
+        ]
+    },
+    "AWS::AppMesh::VirtualRouter": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "Arn",
+            "MeshName",
+            "Uid",
+            "VirtualRouterName"
+        ]
+    },
+    "AWS::AppMesh::VirtualService": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "Arn",
+            "MeshName",
+            "Uid",
+            "VirtualServiceName"
+        ]
+    },
+    "AWS::AppSync::ApiKey": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "ApiKey",
+            "Arn"
+        ]
+    },
+    "AWS::AppSync::DataSource": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "DataSourceArn",
+            "Name"
+        ]
+    },
+    "AWS::AppSync::FunctionConfiguration": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "DataSourceName",
+            "FunctionArn",
+            "FunctionId",
+            "Name"
+        ]
+    },
+    "AWS::AppSync::GraphQLApi": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "ApiId",
+            "Arn",
+            "GraphQLUrl"
+        ]
+    },
+    "AWS::AppSync::GraphQLSchema": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::AppSync::Resolver": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "FieldName",
+            "ResolverArn",
+            "TypeName"
+        ]
+    },
+    "AWS::Athena::NamedQuery": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::AutoScaling::AutoScalingGroup": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::AutoScaling::LaunchConfiguration": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::AutoScaling::LifecycleHook": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::AutoScaling::ScalingPolicy": {
+        "Ref": "Arn",
+        "GetAtt": []
+    },
+    "AWS::AutoScaling::ScheduledAction": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::AutoScalingPlans::ScalingPlan": {
+        "Ref": "Arn",
+        "GetAtt": []
+    },
+    "AWS::Backup::BackupPlan": {
+        "Ref": "Id",
+        "GetAtt": [
+            "BackupPlanArn",
+            "BackupPlanId",
+            "VersionId"
+        ]
+    },
+    "AWS::Backup::BackupSelection": {
+        "Ref": "Id",
+        "GetAtt": [
+            "BackupPlanId",
+            "SelectionId"
+        ]
+    },
+    "AWS::Backup::BackupVault": {
+        "Ref": "Name",
+        "GetAtt": [
+            "BackupVaultArn",
+            "BackupVaultName"
+        ]
+    },
+    "AWS::Batch::ComputeEnvironment": {
+        "Ref": "Arn",
+        "GetAtt": []
+    },
+    "AWS::Batch::JobDefinition": {
+        "Ref": "Arn",
+        "GetAtt": []
+    },
+    "AWS::Batch::JobQueue": {
+        "Ref": "Arn",
+        "GetAtt": []
+    },
+    "AWS::Budgets::Budget": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::CertificateManager::Certificate": {
+        "Ref": "Arn",
+        "GetAtt": []
+    },
+    "AWS::CloudFormation::CustomResource": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::CloudFormation::Macro": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::CloudFormation::Stack": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::CloudFormation::WaitCondition": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Data"
+        ]
+    },
+    "AWS::CloudFormation::WaitConditionHandle": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::CloudFront::CloudFrontOriginAccessIdentity": {
+        "Ref": "OriginAccessIdentity",
+        "GetAtt": [
+            "S3CanonicalUserId"
+        ]
+    },
+    "AWS::CloudFront::Distribution": {
+        "Ref": "Id",
+        "GetAtt": [
+            "DomainName"
+        ]
+    },
+    "AWS::CloudFront::StreamingDistribution": {
+        "Ref": "Id",
+        "GetAtt": [
+            "DomainName"
+        ]
+    },
+    "AWS::CloudTrail::Trail": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Arn",
+            "SnsTopicArn"
+        ]
+    },
+    "AWS::CloudWatch::Alarm": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Arn"
+        ]
+    },
+    "AWS::CloudWatch::AnomalyDetector": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::CloudWatch::Dashboard": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::CodeBuild::Project": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Arn"
+        ]
+    },
+    "AWS::CodeCommit::Repository": {
+        "Ref": "Id",
+        "GetAtt": [
+            "Arn",
+            "CloneUrlHttp",
+            "CloneUrlSsh",
+            "Name"
+        ]
+    },
+    "AWS::CodeDeploy::Application": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::CodeDeploy::DeploymentConfig": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::CodeDeploy::DeploymentGroup": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::CodePipeline::CustomActionType": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::CodePipeline::Pipeline": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Version"
+        ]
+    },
+    "AWS::CodePipeline::Webhook": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Url"
+        ]
+    },
+    "AWS::Cognito::IdentityPool": {
+        "Ref": "Id",
+        "GetAtt": [
+            "Name"
+        ]
+    },
+    "AWS::Cognito::IdentityPoolRoleAttachment": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::Cognito::UserPool": {
+        "Ref": "Id",
+        "GetAtt": [
+            "Arn",
+            "ProviderName",
+            "ProviderURL"
+        ]
+    },
+    "AWS::Cognito::UserPoolClient": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::Cognito::UserPoolGroup": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::Cognito::UserPoolUser": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::Cognito::UserPoolUserToGroupAttachment": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::Config::AggregationAuthorization": {
+        "Ref": "Arn",
+        "GetAtt": []
+    },
+    "AWS::Config::ConfigRule": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Arn",
+            "Compliance.Type",
+            "ConfigRuleId"
+        ]
+    },
+    "AWS::Config::ConfigurationAggregator": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::Config::ConfigurationRecorder": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::Config::DeliveryChannel": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::Config::RemediationConfiguration": {
+        "Ref": "RemediationAction",
+        "GetAtt": []
+    },
+    "AWS::DataPipeline::Pipeline": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::DAX::Cluster": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Arn",
+            "ClusterDiscoveryEndpoint"
+        ]
+    },
+    "AWS::DAX::ParameterGroup": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::DAX::SubnetGroup": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::DLM::LifecyclePolicy": {
+        "Ref": "Id",
+        "GetAtt": [
+            "Arn"
+        ]
+    },
+    "AWS::DMS::Certificate": {
+        "Ref": "Arn",
+        "GetAtt": []
+    },
+    "AWS::DMS::Endpoint": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "ExternalId"
+        ]
+    },
+    "AWS::DMS::EventSubscription": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::DMS::ReplicationInstance": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "ReplicationInstancePrivateIpAddresses",
+            "ReplicationInstancePublicIpAddresses"
+        ]
+    },
+    "AWS::DMS::ReplicationSubnetGroup": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::DMS::ReplicationTask": {
+        "Ref": "Arn",
+        "GetAtt": []
+    },
+    "AWS::DocDB::DBCluster": {
+        "Ref": "DBClusterIdentifier",
+        "GetAtt": [
+            "ClusterResourceId",
+            "Endpoint",
+            "Port",
+            "ReadEndpoint"
+        ]
+    },
+    "AWS::DocDB::DBClusterParameterGroup": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::DocDB::DBInstance": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Endpoint",
+            "Port"
+        ]
+    },
+    "AWS::DocDB::DBSubnetGroup": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::DynamoDB::Table": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Arn",
+            "StreamArn"
+        ]
+    },
+    "AWS::EC2::CapacityReservation": {
+        "Ref": "Id",
+        "GetAtt": [
+            "AvailabilityZone",
+            "AvailableInstanceCount",
+            "InstanceType",
+            "Tenancy",
+            "TotalInstanceCount"
+        ]
+    },
+    "AWS::EC2::ClientVpnAuthorizationRule": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::EC2::ClientVpnEndpoint": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EC2::ClientVpnRoute": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::EC2::ClientVpnTargetNetworkAssociation": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EC2::CustomerGateway": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EC2::DHCPOptions": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::EC2::EC2Fleet": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EC2::EgressOnlyInternetGateway": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EC2::EIP": {
+        "Ref": "ElasticIpAddress",
+        "GetAtt": [
+            "AllocationId"
+        ]
+    },
+    "AWS::EC2::EIPAssociation": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::EC2::FlowLog": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EC2::Host": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EC2::Instance": {
+        "Ref": "Id",
+        "GetAtt": [
+            "AvailabilityZone",
+            "PrivateDnsName",
+            "PrivateIp",
+            "PublicDnsName",
+            "PublicIp"
+        ]
+    },
+    "AWS::EC2::InternetGateway": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::EC2::LaunchTemplate": {
+        "Ref": "Id",
+        "GetAtt": [
+            "DefaultVersionNumber",
+            "LatestVersionNumber"
+        ]
+    },
+    "AWS::EC2::NatGateway": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::EC2::NetworkAcl": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::EC2::NetworkAclEntry": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::EC2::NetworkInterface": {
+        "Ref": "Name",
+        "GetAtt": [
+            "PrimaryPrivateIpAddress",
+            "SecondaryPrivateIpAddresses"
+        ]
+    },
+    "AWS::EC2::NetworkInterfaceAttachment": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::EC2::NetworkInterfacePermission": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::EC2::PlacementGroup": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::EC2::Route": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EC2::RouteTable": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EC2::SecurityGroup": {
+        "Ref": "Name",
+        "GetAtt": [
+            "GroupId",
+            "VpcId"
+        ]
+    },
+    "AWS::EC2::SecurityGroupEgress": {
+        "Ref": "RuleName",
+        "GetAtt": []
+    },
+    "AWS::EC2::SecurityGroupIngress": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::EC2::SpotFleet": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EC2::Subnet": {
+        "Ref": "Id",
+        "GetAtt": [
+            "AvailabilityZone",
+            "Ipv6CidrBlocks",
+            "NetworkAclAssociationId",
+            "VpcId"
+        ]
+    },
+    "AWS::EC2::SubnetCidrBlock": {
+        "Ref": "CidrBlock",
+        "GetAtt": []
+    },
+    "AWS::EC2::SubnetNetworkAclAssociation": {
+        "Ref": "Id",
+        "GetAtt": [
+            "AssociationId"
+        ]
+    },
+    "AWS::EC2::SubnetRouteTableAssociation": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EC2::TransitGateway": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EC2::TransitGatewayAttachment": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::EC2::TransitGatewayRoute": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::EC2::TransitGatewayRouteTable": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::EC2::TransitGatewayRouteTableAssociation": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EC2::TransitGatewayRouteTablePropagation": {
+        "Ref": "RouteTableId",
+        "GetAtt": []
+    },
+    "AWS::EC2::Volume": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::EC2::VolumeAttachment": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::EC2::VPC": {
+        "Ref": "Id",
+        "GetAtt": [
+            "CidrBlock",
+            "CidrBlockAssociations",
+            "DefaultNetworkAcl",
+            "DefaultSecurityGroup",
+            "Ipv6CidrBlocks"
+        ]
+    },
+    "AWS::EC2::VPCCidrBlock": {
+        "Ref": "CidrBlock",
+        "GetAtt": []
+    },
+    "AWS::EC2::VPCDHCPOptionsAssociation": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EC2::VPCEndpoint": {
+        "Ref": "Id",
+        "GetAtt": [
+            "CreationTimestamp",
+            "DnsEntries",
+            "NetworkInterfaceIds"
+        ]
+    },
+    "AWS::EC2::VPCEndpointConnectionNotification": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EC2::VPCEndpointService": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EC2::VPCEndpointServicePermissions": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EC2::VPCGatewayAttachment": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EC2::VPCPeeringConnection": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EC2::VPNConnection": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EC2::VPNConnectionRoute": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EC2::VPNGateway": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EC2::VPNGatewayRoutePropagation": {
+        "Ref": "VpnGatewayId",
+        "GetAtt": []
+    },
+    "AWS::ECR::Repository": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Arn"
+        ]
+    },
+    "AWS::ECS::Cluster": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Arn"
+        ]
+    },
+    "AWS::ECS::Service": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "Name"
+        ]
+    },
+    "AWS::ECS::TaskDefinition": {
+        "Ref": "Arn",
+        "GetAtt": []
+    },
+    "AWS::EFS::FileSystem": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::EFS::MountTarget": {
+        "Ref": "Id",
+        "GetAtt": [
+            "IpAddress"
+        ]
+    },
+    "AWS::EKS::Cluster": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Arn",
+            "CertificateAuthorityData",
+            "Endpoint"
+        ]
+    },
+    "AWS::ElastiCache::CacheCluster": {
+        "Ref": "Name",
+        "GetAtt": [
+            "ConfigurationEndpoint.Address",
+            "ConfigurationEndpoint.Port",
+            "RedisEndpoint.Address",
+            "RedisEndpoint.Port"
+        ]
+    },
+    "AWS::ElastiCache::ParameterGroup": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::ElastiCache::ReplicationGroup": {
+        "Ref": "Name",
+        "GetAtt": [
+            "ConfigurationEndPoint.Address",
+            "ConfigurationEndPoint.Port",
+            "PrimaryEndPoint.Address",
+            "PrimaryEndPoint.Port",
+            "ReadEndPoint.Addresses",
+            "ReadEndPoint.Addresses.List",
+            "ReadEndPoint.Ports",
+            "ReadEndPoint.Ports.List"
+        ]
+    },
+    "AWS::ElastiCache::SecurityGroup": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::ElastiCache::SecurityGroupIngress": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::ElastiCache::SubnetGroup": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::ElasticBeanstalk::Application": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::ElasticBeanstalk::ApplicationVersion": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::ElasticBeanstalk::ConfigurationTemplate": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::ElasticBeanstalk::Environment": {
+        "Ref": "Name",
+        "GetAtt": [
+            "EndpointURL"
+        ]
+    },
+    "AWS::ElasticLoadBalancing::LoadBalancer": {
+        "Ref": "Name",
+        "GetAtt": [
+            "CanonicalHostedZoneName",
+            "CanonicalHostedZoneNameID",
+            "DNSName",
+            "SourceSecurityGroup.GroupName",
+            "SourceSecurityGroup.OwnerAlias"
+        ]
+    },
+    "AWS::ElasticLoadBalancingV2::Listener": {
+        "Ref": "Arn",
+        "GetAtt": []
+    },
+    "AWS::ElasticLoadBalancingV2::ListenerCertificate": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::ElasticLoadBalancingV2::ListenerRule": {
+        "Ref": "Arn",
+        "GetAtt": []
+    },
+    "AWS::ElasticLoadBalancingV2::LoadBalancer": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "CanonicalHostedZoneID",
+            "DNSName",
+            "LoadBalancerFullName",
+            "LoadBalancerName",
+            "SecurityGroups"
+        ]
+    },
+    "AWS::ElasticLoadBalancingV2::TargetGroup": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "LoadBalancerArns",
+            "TargetGroupFullName",
+            "TargetGroupName"
+        ]
+    },
+    "AWS::Elasticsearch::Domain": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Arn",
+            "DomainArn",
+            "DomainEndpoint"
+        ]
+    },
+    "AWS::EMR::Cluster": {
+        "Ref": "Id",
+        "GetAtt": [
+            "MasterPublicDNS"
+        ]
+    },
+    "AWS::EMR::InstanceFleetConfig": {
+        "Ref": "InstanceFleetId",
+        "GetAtt": []
+    },
+    "AWS::EMR::InstanceGroupConfig": {
+        "Ref": "InstanceGroupId",
+        "GetAtt": []
+    },
+    "AWS::EMR::SecurityConfiguration": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::EMR::Step": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::Events::EventBus": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Arn",
+            "Name",
+            "Policy"
+        ]
+    },
+    "AWS::Events::EventBusPolicy": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::Events::Rule": {
+        "Ref": "Id",
+        "GetAtt": [
+            "Arn"
+        ]
+    },
+    "AWS::Glue::Classifier": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::Glue::Connection": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::Glue::Crawler": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::Glue::Database": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::Glue::DataCatalogEncryptionSettings": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::Glue::DevEndpoint": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::Glue::Job": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::Glue::Partition": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::Glue::SecurityConfiguration": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::Glue::Table": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::Glue::Trigger": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::GuardDuty::Detector": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::GuardDuty::Filter": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::GuardDuty::IPSet": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::GuardDuty::Master": {
+        "Ref": "AccountId",
+        "GetAtt": []
+    },
+    "AWS::GuardDuty::Member": {
+        "Ref": "AccountId",
+        "GetAtt": []
+    },
+    "AWS::GuardDuty::ThreatIntelSet": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::IAM::AccessKey": {
+        "Ref": "AccessKeyId",
+        "GetAtt": [
+            "SecretAccessKey"
+        ]
+    },
+    "AWS::IAM::Group": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Arn"
+        ]
+    },
+    "AWS::IAM::InstanceProfile": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Arn"
+        ]
+    },
+    "AWS::IAM::ManagedPolicy": {
+        "Ref": "Arn",
+        "GetAtt": []
+    },
+    "AWS::IAM::Policy": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::IAM::Role": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Arn",
+            "RoleId"
+        ]
+    },
+    "AWS::IAM::ServiceLinkedRole": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::IAM::User": {
+        "Ref": "UserName",
+        "GetAtt": [
+            "Arn"
+        ]
+    },
+    "AWS::IAM::UserToGroupAddition": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::Inspector::AssessmentTarget": {
+        "Ref": null,
+        "GetAtt": [
+            "Arn"
+        ]
+    },
+    "AWS::Inspector::AssessmentTemplate": {
+        "Ref": null,
+        "GetAtt": [
+            "Arn"
+        ]
+    },
+    "AWS::Inspector::ResourceGroup": {
+        "Ref": null,
+        "GetAtt": [
+            "Arn"
+        ]
+    },
+    "AWS::IoT::Certificate": {
+        "Ref": "Id",
+        "GetAtt": [
+            "Arn"
+        ]
+    },
+    "AWS::IoT::Policy": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Arn"
+        ]
+    },
+    "AWS::IoT::PolicyPrincipalAttachment": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::IoT::Thing": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::IoT::ThingPrincipalAttachment": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::IoT::TopicRule": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Arn"
+        ]
+    },
+    "AWS::IoT1Click::Device": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "Arn",
+            "DeviceId",
+            "Enabled"
+        ]
+    },
+    "AWS::IoT1Click::Placement": {
+        "Ref": "Id",
+        "GetAtt": [
+            "PlacementName",
+            "ProjectName"
+        ]
+    },
+    "AWS::IoT1Click::Project": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "Arn",
+            "ProjectName"
+        ]
+    },
+    "AWS::IoTAnalytics::Channel": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::IoTAnalytics::Dataset": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::IoTAnalytics::Datastore": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::IoTAnalytics::Pipeline": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::IoTEvents::DetectorModel": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::IoTEvents::Input": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::IoTThingsGraph::FlowTemplate": {
+        "Ref": "Urn",
+        "GetAtt": []
+    },
+    "AWS::Kinesis::Stream": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Arn"
+        ]
+    },
+    "AWS::Kinesis::StreamConsumer": {
+        "Ref": "ConsumerArn",
+        "GetAtt": [
+            "ConsumerARN",
+            "ConsumerCreationTimestamp",
+            "ConsumerName",
+            "ConsumerStatus",
+            "StreamARN"
+        ]
+    },
+    "AWS::KinesisAnalytics::Application": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::KinesisAnalytics::ApplicationOutput": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::KinesisAnalytics::ApplicationReferenceDataSource": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::KinesisAnalyticsV2::Application": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::KinesisAnalyticsV2::ApplicationCloudWatchLoggingOption": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::KinesisAnalyticsV2::ApplicationOutput": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::KinesisAnalyticsV2::ApplicationReferenceDataSource": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::KinesisFirehose::DeliveryStream": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Arn"
+        ]
+    },
+    "AWS::KMS::Alias": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::KMS::Key": {
+        "Ref": "Id",
+        "GetAtt": [
+            "Arn"
+        ]
+    },
+    "AWS::Lambda::Alias": {
+        "Ref": "Arn",
+        "GetAtt": []
+    },
+    "AWS::Lambda::EventSourceMapping": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::Lambda::Function": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Arn"
+        ]
+    },
+    "AWS::Lambda::LayerVersion": {
+        "Ref": "Arn",
+        "GetAtt": []
+    },
+    "AWS::Lambda::LayerVersionPermission": {
+        "Ref": "Arn",
+        "GetAtt": []
+    },
+    "AWS::Lambda::Permission": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::Lambda::Version": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "Version"
+        ]
+    },
+    "AWS::Logs::Destination": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Arn"
+        ]
+    },
+    "AWS::Logs::LogGroup": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Arn"
+        ]
+    },
+    "AWS::Logs::LogStream": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::Logs::MetricFilter": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::Logs::SubscriptionFilter": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::RDS::DBCluster": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Endpoint.Address",
+            "Endpoint.Port",
+            "ReadEndpoint.Address"
+        ]
+    },
+    "AWS::RDS::DBClusterParameterGroup": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::RDS::DBInstance": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Endpoint.Address",
+            "Endpoint.Port"
+        ]
+    },
+    "AWS::RDS::DBParameterGroup": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::RDS::DBSecurityGroup": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::RDS::DBSecurityGroupIngress": {
+        "Ref": "DBSecurityGroup",
+        "GetAtt": []
+    },
+    "AWS::RDS::DBSubnetGroup": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::RDS::EventSubscription": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::RDS::OptionGroup": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::Route53::HealthCheck": {
+        "Ref": "HealthCheckId",
+        "GetAtt": []
+    },
+    "AWS::Route53::HostedZone": {
+        "Ref": "HosteadZoneId",
+        "GetAtt": [
+            "NameServers"
+        ]
+    },
+    "AWS::Route53::RecordSet": {
+        "Ref": "DomainName",
+        "GetAtt": []
+    },
+    "AWS::Route53::RecordSetGroup": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::Route53Resolver::ResolverEndpoint": {
+        "Ref": "ResolverEndpoint",
+        "GetAtt": [
+            "Arn",
+            "Direction",
+            "HostVPCId",
+            "IpAddressCount",
+            "Name",
+            "ResolverEndpointId"
+        ]
+    },
+    "AWS::Route53Resolver::ResolverRule": {
+        "Ref": "ResolverRule",
+        "GetAtt": [
+            "Arn",
+            "DomainName",
+            "ResolverEndpointId",
+            "ResolverRuleId",
+            "TargetIps"
+        ]
+    },
+    "AWS::Route53Resolver::ResolverRuleAssociation": {
+        "Ref": "ResolverRuleAssociationId",
+        "GetAtt": [
+            "Name",
+            "ResolverRuleAssociationId",
+            "ResolverRuleId",
+            "VPCId"
+        ]
+    },
+    "AWS::S3::Bucket": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Arn",
+            "DomainName",
+            "DualStackDomainName",
+            "RegionalDomainName",
+            "WebsiteURL"
+        ]
+    },
+    "AWS::SageMaker::CodeRepository": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "CodeRepositoryName"
+        ]
+    },
+    "AWS::SageMaker::Endpoint": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "EndpointName"
+        ]
+    },
+    "AWS::SageMaker::EndpointConfig": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "EndpointConfigName"
+        ]
+    },
+    "AWS::SageMaker::Model": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "ModelName"
+        ]
+    },
+    "AWS::SageMaker::NotebookInstance": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "NotebookInstanceName"
+        ]
+    },
+    "AWS::SageMaker::NotebookInstanceLifecycleConfig": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "NotebookInstanceLifecycleConfigName"
+        ]
+    },
+    "AWS::SecretsManager::ResourcePolicy": {
+        "Ref": "Arn",
+        "GetAtt": []
+    },
+    "AWS::SecretsManager::RotationSchedule": {
+        "Ref": "Arn",
+        "GetAtt": []
+    },
+    "AWS::SecretsManager::Secret": {
+        "Ref": "Arn",
+        "GetAtt": []
+    },
+    "AWS::SecretsManager::SecretTargetAttachment": {
+        "Ref": "Arn",
+        "GetAtt": []
+    },
+    "AWS::ServiceDiscovery::HttpNamespace": {
+        "Ref": "Id",
+        "GetAtt": [
+            "Arn",
+            "Id"
+        ]
+    },
+    "AWS::ServiceDiscovery::Instance": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::ServiceDiscovery::PrivateDnsNamespace": {
+        "Ref": "Id",
+        "GetAtt": [
+            "Arn",
+            "Id"
+        ]
+    },
+    "AWS::ServiceDiscovery::PublicDnsNamespace": {
+        "Ref": "Id",
+        "GetAtt": [
+            "Arn",
+            "Id"
+        ]
+    },
+    "AWS::ServiceDiscovery::Service": {
+        "Ref": "Id",
+        "GetAtt": [
+            "Arn",
+            "Id",
+            "Name"
+        ]
+    },
+    "AWS::SES::ConfigurationSet": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::SES::ConfigurationSetEventDestination": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::SES::ReceiptFilter": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::SES::ReceiptRule": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::SES::ReceiptRuleSet": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::SES::Template": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::SNS::Topic": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "TopicName"
+        ]
+    },
+    "AWS::SQS::Queue": {
+        "Ref": "QueueURL",
+        "GetAtt": [
+            "Arn",
+            "QueueName"
+        ]
+    },
+    "AWS::SSM::Association": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::SSM::Document": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::SSM::MaintenanceWindow": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::SSM::MaintenanceWindowTarget": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::SSM::MaintenanceWindowTask": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::SSM::Parameter": {
+        "Ref": "Name",
+        "GetAtt": [
+            "Type",
+            "Value"
+        ]
+    },
+    "AWS::SSM::PatchBaseline": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::SSM::ResourceDataSync": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::StepFunctions::Activity": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "Name"
+        ]
+    },
+    "AWS::StepFunctions::StateMachine": {
+        "Ref": "Arn",
+        "GetAtt": [
+            "Name"
+        ]
+    },
+    "AWS::Transfer::Server": {
+        "Ref": "Id",
+        "GetAtt": [
+            "Arn",
+            "ServerId"
+        ]
+    },
+    "AWS::Transfer::User": {
+        "Ref": "UserName",
+        "GetAtt": [
+            "Arn",
+            "ServerId",
+            "UserName"
+        ]
+    },
+    "AWS::WAF::ByteMatchSet": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::WAF::IPSet": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::WAF::Rule": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::WAF::SizeConstraintSet": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::WAF::SqlInjectionMatchSet": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::WAF::WebACL": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::WAF::XssMatchSet": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::WAFRegional::ByteMatchSet": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::WAFRegional::GeoMatchSet": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::WAFRegional::IPSet": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::WAFRegional::RateBasedRule": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::WAFRegional::RegexPatternSet": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::WAFRegional::Rule": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::WAFRegional::SizeConstraintSet": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::WAFRegional::SqlInjectionMatchSet": {
+        "Ref": "Id",
+        "GetAtt": []
+    },
+    "AWS::WAFRegional::WebACL": {
+        "Ref": "Name",
+        "GetAtt": []
+    },
+    "AWS::WAFRegional::WebACLAssociation": {
+        "Ref": null,
+        "GetAtt": []
+    },
+    "AWS::WAFRegional::XssMatchSet": {
+        "Ref": "Id",
+        "GetAtt": []
+    }
+}
