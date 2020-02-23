@@ -53,7 +53,7 @@ async function start(templatePath, format, output) {
     }
 
     document.Statement.push({
-      Sid: `Statement_${document.Statement.length + 1}`,
+      Sid: `Statement${document.Statement.length + 1}`,
       Effect: effect,
       Action: actions.map(p => `${selectedService.StringPrefix}:${p}`),
       Resource: resources || null,

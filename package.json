@@ -1,6 +1,6 @@
 {
   "name": "@mhlabs/iam-policies-cli",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A CLI tool for building simple to complex IAM policies",
   "main": "index.js",
   "scripts": {
@@ -18,9 +18,9 @@
     "yaml-cfn": "^0.2.3"
   },
   "bugs": {
-    "url": "https://github.com/mhlabs/iam-gen-cli/issues"
+    "url": "https://github.com/mhlabs/iam-policies-cli/issues"
   },
-  "homepage": "https://github.com/mhlabs/iam-gen-cli#readme",
+  "homepage": "https://github.com/mhlabs/iam-policies-cli#readme",
   "devDependencies": {
     "jest": "^25.1.0"
   },
