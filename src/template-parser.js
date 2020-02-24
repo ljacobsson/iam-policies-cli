@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const intrinsicMap = JSON.parse(
+  // eslint-disable-next-line no-undef
   fs.readFileSync(path.resolve(__dirname, "..", "data", "cfn-return-values.json")).toString()
 );
 

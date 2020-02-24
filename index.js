@@ -24,5 +24,6 @@ program
     await inputWizard.start(cmd.template, cmd.format, cmd.output);
   });
 
+// eslint-disable-next-line no-undef
 program.parse(process.argv);
 

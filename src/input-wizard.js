@@ -80,7 +80,7 @@ async function selectConditions(conditions, policies, selectedService) {
       policies.conditionOperators
     );
     conditions[operator] = {};
-    const key = await input.list(`Select condition key`, [
+    let key = await input.list(`Select condition key`, [
       ...(selectedService.conditionKeys || []),
       ...policies.conditionKeys
     ]);
@@ -182,7 +182,7 @@ function getTemplate(templatePath) {
     const file = fs.readFileSync(templatePath).toString();
     try {
       template = JSON.parse(file);
-    } catch {
+    } catch (err) {
       template = YAML.parse(file);
     }
   }
