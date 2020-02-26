@@ -41,7 +41,7 @@ async function start(templatePath, format, output) {
       lastARN = await inputArn(template, selectedService, lastARN, resources);
     }
 
-    const conditionsInput = await input.confirm(`Add conditions?`);
+    const conditionsInput = await input.confirm(`Add conditions?`, false);
 
     let conditions;
     if (conditionsInput) {
@@ -138,7 +138,14 @@ async function selectEffect() {
 }
 
 async function selectActions(selectedService) {
-  return await input.checkbox(`Add action(s)`, selectedService.Actions);
+  let actions = [];
+  do { 
+    actions = await input.checkbox(`Add action(s)`, selectedService.Actions);
+    if (actions.length === 0) {
+      console.log("Please select at leats one action");
+    }
+  } while (actions.length === 0) 
+  return actions;
 }
 
 async function selectService(
