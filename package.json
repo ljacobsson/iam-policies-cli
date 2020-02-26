@@ -1,6 +1,6 @@
 {
   "name": "@mhlabs/iam-policies-cli",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A CLI tool for building simple to complex IAM policies",
   "main": "index.js",
   "scripts": {
@@ -30,5 +30,13 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "keywords": [
+    "aws",
+    "iam",
+    "policies",
+    "serverless",
+    "cloudformation",
+    "sam"
+  ]
 }
