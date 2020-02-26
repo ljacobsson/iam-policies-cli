@@ -1,6 +1,6 @@
 ## iam-policies-cli
 
-CLI for generating AWS IAM policy documents based on a [JSON definition](https://awspolicygen.s3.amazonaws.com/js/policies.js).
+CLI for generating AWS IAM policy documents based on the [JSON definition](https://awspolicygen.s3.amazonaws.com/js/policies.js) used in the [AWS Policy Generator](https://awspolicygen.s3.amazonaws.com/policygen.html).  
 
 Provide an optional SAM or CloudFormation template and it will let you reference resource ARNs using intrinsic functions for defined resources. 
 
