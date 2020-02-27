@@ -1,6 +1,6 @@
 {
   "name": "@mhlabs/iam-policies-cli",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A CLI tool for building simple to complex IAM policies",
   "main": "index.js",
   "scripts": {
