@@ -5,7 +5,7 @@ const events = require("events");
 
 events.EventEmitter.defaultMaxListeners = 1000;
 
-program.version("1.0.0", "-v, --vers", "output the current version");
+program.version("0.0.8", "-v, --vers", "output the current version");
 
 program
   .option(
