@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.619.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "clipboardy": "^2.2.0",
     "commander": "^4.1.1",
     "inquirer": "^7.0.4",
