@@ -11,7 +11,7 @@ program
   .option(
     "-t, --template <filename>",
     "Template file name",
-    "serverless.template"
+    "template.yaml"
   )
   .option("-f, --format <JSON|YAML>", "Output format", "JSON")
   .option("-o, --output <console|clipboard>", "Policy output", "console")

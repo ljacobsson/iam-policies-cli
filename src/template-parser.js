@@ -3,7 +3,11 @@ const path = require("path");
 
 const intrinsicMap = JSON.parse(
   // eslint-disable-next-line no-undef
-  fs.readFileSync(path.resolve(__dirname, "..", "data", "cfn-return-values.json")).toString()
+  fs
+    .readFileSync(
+      path.resolve(__dirname, "..", "data", "cfn-return-values.json")
+    )
+    .toString()
 );
 
 function translateSAMResourceType(resourceType) {
@@ -13,10 +17,12 @@ function translateSAMResourceType(resourceType) {
     case "AWS::Serverless::Api":
       return "AWS::ApiGateway::RestApi";
     case "AWS::Serverless::SimpleTable":
-      return "AWS::DynamoDB::Table"
+      return "AWS::DynamoDB::Table";
+    case "AWS::Serverless::StateMachine":
+      return "AWS::StepFunctions::StateMachine";
     default:
       return resourceType;
-    }
+  }
 }
 
 function getResources(template, resourceType) {
@@ -38,19 +44,24 @@ function suggestedServices(template, allServices) {
     return list;
   }
   for (const key of Object.keys(template.Resources)) {
-    const resource = translateSAMResourceType(template.Resources[key].Type).split("::")[1].toLowerCase();
-    const matches = Object.keys(allServices).filter(
-      p => allServices[p].StringPrefix === resource
+    const resource = translateSAMResourceType(template.Resources[key].Type)
+      .split("::")[1]
+      .toLowerCase();
+    const matches = allServices.filter(
+      (p) => p.value.StringPrefix === resource
     );
     if (matches.length > 0) {
       list.push(...matches);
     }
   }
-  return Array.from(new Set(list));
+  return Array.from(new Set(list)).sort((a, b) => (a.name > b.name ? 1 : -1));
 }
 
 function getRefResolver(resourceType, resourceName) {
-  const type = intrinsicMap[translateSAMResourceType(resourceType.replace(/\[(.+)\]/, "$1"))];
+  const type =
+    intrinsicMap[
+      translateSAMResourceType(resourceType.replace(/\[(.+)\]/, "$1"))
+    ];
 
   if (type.Ref && type.Ref.includes("Arn")) {
     return { Ref: resourceName };
@@ -66,5 +77,5 @@ function getRefResolver(resourceType, resourceName) {
 module.exports = {
   getResources,
   getRefResolver,
-  suggestedServices
+  suggestedServices,
 };

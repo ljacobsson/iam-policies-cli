@@ -6,30 +6,30 @@ const input = require("./input-helper");
 const fs = require("fs");
 const YAML = require("./yaml-wrapper");
 const clipboard = require("clipboardy");
+let templateFormat;
 
 async function start(templatePath, format, output) {
-  const serializer = format.toLowerCase().startsWith("y") ? YAML : JSON;
   let template = getTemplate(templatePath);
-  const policies = await getPolices();
+  format = templateFormat || format;
+  const serializer = format.toLowerCase().startsWith("y") ? YAML : JSON;
+  let policies = await getPolices();
 
   const suggestedServices = templateParser.suggestedServices(
     template,
-    policies.serviceMap
+    policies
   );
 
   const document = {
     Version: "2012-10-17",
-    Statement: []
+    Statement: [],
   };
   let addStatement;
   let lastARN = "";
-  const serviceMapKeys = Object.keys(policies.serviceMap);
-  serviceMapKeys.sort();
+  policies.sort((a, b) => (a.name > b.name ? 1 : -1));
   do {
     const selectedService = await selectService(
       template,
       suggestedServices,
-      serviceMapKeys,
       policies
     );
     const actions = await selectActions(selectedService);
@@ -55,15 +55,17 @@ async function start(templatePath, format, output) {
     document.Statement.push({
       Sid: `Statement${document.Statement.length + 1}`,
       Effect: effect,
-      Action: actions.map(p => `${selectedService.StringPrefix}:${p}`),
+      Action: actions.map((p) => `${selectedService.StringPrefix}:${p}`),
       Resource: resources || null,
-      Condition: conditions 
+      Condition: conditions,
     });
 
     if (output.toLowerCase() === "console") {
       console.log("Generated policy:");
       console.log("*****************");
-      console.log(serializer.stringify(JSON.parse(JSON.stringify(document)), null, 2));    
+      console.log(
+        serializer.stringify(JSON.parse(JSON.stringify(document)), null, 2)
+      );
     } else {
       clipboard.writeSync(serializer.stringify(document, null, 2));
     }
@@ -82,7 +84,7 @@ async function selectConditions(conditions, policies, selectedService) {
     conditions[operator] = {};
     let key = await input.list(`Select condition key`, [
       ...(selectedService.conditionKeys || []),
-      ...policies.conditionKeys
+      ...policies.conditionKeys,
     ]);
     if (key.indexOf("${TagKey}") > 0) {
       const tagKey = await input.text(`Input tag name`);
@@ -101,7 +103,7 @@ async function inputArn(template, selectedService, lastARN, resources) {
     if (template) {
       const templateResource = await input.list("Select resource ARN from", [
         "Template",
-        "Free text"
+        "Free text",
       ]);
       if (templateResource === "Template") {
         const resources = templateParser.getResources(
@@ -112,7 +114,7 @@ async function inputArn(template, selectedService, lastARN, resources) {
           new inquirer.Separator("--- Matching resources ---"),
           ...resources.matching,
           new inquirer.Separator("--- Other resources ---"),
-          ...resources.all
+          ...resources.all,
         ]);
         const split = res.split(" ");
         arn = templateParser.getRefResolver(split[0], split[1]);
@@ -129,7 +131,7 @@ async function inputArn(template, selectedService, lastARN, resources) {
       resources.push(arn);
     }
     lastARN = arn;
-  } while (await input.confirm("Add more resources?"));
+  } while (await input.confirm("Add more resources?", false));
   return lastARN;
 }
 
@@ -139,21 +141,16 @@ async function selectEffect() {
 
 async function selectActions(selectedService) {
   let actions = [];
-  do { 
+  do {
     actions = await input.checkbox(`Add action(s)`, selectedService.Actions);
     if (actions.length === 0) {
       console.log("Please select at leats one action");
     }
-  } while (actions.length === 0) 
+  } while (actions.length === 0);
   return actions;
 }
 
-async function selectService(
-  template,
-  suggestedServices,
-  serviceMapKeys,
-  policies
-) {
+async function selectService(template, suggestedServices, policies) {
   let serviceName;
   if (template) {
     serviceName = await input.list(`Build statement for`, [
@@ -164,13 +161,12 @@ async function selectService(
         : [],
       ...suggestedServices,
       new inquirer.Separator("--- All services ---"),
-      ...serviceMapKeys
+      ...policies,
     ]);
   } else {
-    serviceName = await input.list(`Build statement for`, serviceMapKeys);
+    serviceName = await input.list(`Build statement for`, policies);
   }
-  const selectedService = policies.serviceMap[serviceName];
-  return selectedService;
+  return serviceName;
 }
 
 async function getPolices() {
@@ -180,7 +176,15 @@ async function getPolices() {
   const policies = JSON.parse(
     policiesResponse.data.replace("app.PolicyEditorConfig=", "")
   ); // Make it JSON parseable
-  return policies;
+
+  return Object.keys(policies.serviceMap).map((p) => {
+    const item = policies.serviceMap[p];
+    const niceName = p.replace(/^AWS /, "").replace(/^Amazon /, "");
+    return {
+      name: niceName,
+      value: { ...item, name: niceName },
+    };
+  });
 }
 
 function getTemplate(templatePath) {
@@ -189,8 +193,10 @@ function getTemplate(templatePath) {
     const file = fs.readFileSync(templatePath).toString();
     try {
       template = JSON.parse(file);
+      templateFormat = "json";
     } catch (err) {
       template = YAML.parse(file);
+      templateFormat = "yaml";
     }
   }
 
@@ -198,5 +204,5 @@ function getTemplate(templatePath) {
 }
 
 module.exports = {
-  start
+  start,
 };
