@@ -144,7 +144,7 @@ async function selectActions(selectedService) {
   do {
     actions = await input.checkbox(`Add action(s)`, selectedService.Actions);
     if (actions.length === 0) {
-      console.log("Please select at leats one action");
+      console.log("Please select at least one action");
     }
   } while (actions.length === 0);
   return actions;
@@ -156,8 +156,8 @@ async function selectService(template, suggestedServices, policies) {
     serviceName = await input.list(`Build statement for`, [
       suggestedServices.length
         ? new inquirer.Separator(
-            "--- Suggested services based on CloudFormation template ---"
-          )
+          "--- Suggested services based on CloudFormation template ---"
+        )
         : [],
       ...suggestedServices,
       new inquirer.Separator("--- All services ---"),
