@@ -2,10 +2,11 @@
 const program = require("commander");
 const inputWizard = require("./src/input-wizard");
 const events = require("events");
+const package = require("./package.json");
 
 events.EventEmitter.defaultMaxListeners = 1000;
 
-program.version("0.0.8", "-v, --vers", "output the current version");
+program.version(package.version, "-v, --vers", "output the current version");
 
 program
   .option(
