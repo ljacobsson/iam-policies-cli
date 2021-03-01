@@ -1,10 +1,10 @@
 ## iam-policies-cli
 
-CLI for generating AWS IAM policy documents based on the [JSON definition](https://awspolicygen.s3.amazonaws.com/js/policies.js) used in the [AWS Policy Generator](https://awspolicygen.s3.amazonaws.com/policygen.html).  
+CLI for generating AWS IAM policy documents or SAM policy templates based on the [JSON definition](https://awspolicygen.s3.amazonaws.com/js/policies.js) used in the [AWS Policy Generator](https://awspolicygen.s3.amazonaws.com/policygen.html).  
 
 Provide an optional SAM or CloudFormation template and it will let you reference resource ARNs using intrinsic functions for defined resources. 
 
-The mapping of CloudFormation resource type -> the intrinsic function that returns the ARN is taken from a JSON representation of [this table](https://theburningmonk.com/cloudformation-ref-and-getatt-cheatsheet/) and might not be up-to-date with the latest releases.
+The mapping of CloudFormation resource type -> the intrinsic function that returns the ARN is based on the [cfn-lint schema for us-east-1](https://github.com/aws-cloudformation/cfn-python-lint/blob/master/src/cfnlint/data/CloudSpecs/us-east-1.json)
 
 ## Installation
 `npm install -g @mhlabs/iam-policies-cli`
