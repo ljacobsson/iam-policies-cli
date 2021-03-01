@@ -6,8 +6,8 @@ const input = require("./input-helper");
 const fs = require("fs");
 const YAML = require("./yaml-wrapper");
 const clipboard = require("clipboardy");
+const samProvider = require("./sam-provider");
 let templateFormat;
-
 async function start(templatePath, format, output) {
   let template = getTemplate(templatePath);
   format = templateFormat || format;
@@ -19,47 +19,83 @@ async function start(templatePath, format, output) {
     policies
   );
 
-  const document = {
+  let document = {
     Version: "2012-10-17",
     Statement: [],
   };
   let addStatement;
   let lastARN = "";
   policies.sort((a, b) => (a.name > b.name ? 1 : -1));
+  let exit = false;
   do {
     const selectedService = await selectService(
       template,
       suggestedServices,
       policies
     );
-    const actions = await selectActions(selectedService);
-    const effect = await selectEffect();
+    const compatibleSamResources = await samProvider.getSAMResources(
+      selectedService
+    );
 
-    let resources = null;
-    resources = [];
-    if (selectedService.HasResource) {
-      lastARN = await inputArn(template, selectedService, lastARN, resources);
-    }
+    const actions = await selectActions(
+      selectedService,
+      compatibleSamResources
+    );
 
-    const conditionsInput = await input.confirm(`Add conditions?`, false);
+    if (actions[0].Definition) {
+      let selectedResource;
+      if (template) {
+        const matchingResources = Object.keys(template.Resources).filter(
+          (p) => {
+            return (
+              template.Resources[p].Type.split("::")[1].toLowerCase() ===
+              selectedService.StringPrefix
+            );
+          }
+        );
+        selectedResource = await input.selectResource(matchingResources);
+      }
 
-    let conditions;
-    if (conditionsInput) {
-      conditions = await selectConditions(
-        conditions,
-        policies,
-        selectedService
+      if (!selectedResource || selectedResource === input.NOT_TEMPLATED) {
+        selectedResource = await input.text("Resource name", "MyResource");
+      }
+
+      const policyTemplate = await samProvider.buildParameters(
+        Object.keys(actions[0].Parameters),
+        selectedService.StringPrefix,
+        selectedResource
       );
+      document = {};
+      document[actions[0].name] = policyTemplate;
+      exit = true;
+    } else {
+      const effect = await selectEffect();
+
+      let resources = null;
+      resources = [];
+      if (selectedService.HasResource) {
+        lastARN = await inputArn(template, selectedService, lastARN, resources);
+      }
+
+      const conditionsInput = await input.confirm(`Add conditions?`, false);
+
+      let conditions;
+      if (conditionsInput) {
+        conditions = await selectConditions(
+          conditions,
+          policies,
+          selectedService
+        );
+      }
+
+      document.Statement.push({
+        Sid: `Statement${document.Statement.length + 1}`,
+        Effect: effect,
+        Action: actions.map((p) => `${selectedService.StringPrefix}:${p}`),
+        Resource: resources || null,
+        Condition: conditions,
+      });
     }
-
-    document.Statement.push({
-      Sid: `Statement${document.Statement.length + 1}`,
-      Effect: effect,
-      Action: actions.map((p) => `${selectedService.StringPrefix}:${p}`),
-      Resource: resources || null,
-      Condition: conditions,
-    });
-
     if (output.toLowerCase() === "console") {
       console.log("Generated policy:");
       console.log("*****************");
@@ -68,6 +104,9 @@ async function start(templatePath, format, output) {
       );
     } else {
       clipboard.writeSync(serializer.stringify(document, null, 2));
+    }
+    if (exit) {
+      break;
     }
 
     addStatement = await input.list("Please select", ["Add statement", "done"]);
@@ -117,7 +156,7 @@ async function inputArn(template, selectedService, lastARN, resources) {
           ...resources.all,
         ]);
         const split = res.split(" ");
-        arn = templateParser.getRefResolver(split[0], split[1]);
+        arn = templateParser.getRefResolver2(split[0], split[1]);
         isTemplateResource = true;
       }
     }
@@ -139,14 +178,33 @@ async function selectEffect() {
   return await input.list(`Select effect`, effects);
 }
 
-async function selectActions(selectedService) {
+async function selectActions(selectedService, samResources) {
   let actions = [];
+  let exit = true;
   do {
-    actions = await input.checkbox(`Add action(s)`, selectedService.Actions);
+    const choices = [];
+    if (samResources && samResources.length) {
+      choices.push(
+        new inquirer.Separator("--- SAM Policy Templates ---"),
+        ...samResources,
+        new inquirer.Separator("--- IAM Actions ---")
+      );
+    }
+
+    choices.push(...selectedService.Actions);
+    actions = await input.checkbox(`Add action(s)`, choices);
+    exit = true;
     if (actions.length === 0) {
       console.log("Please select at least one action");
+      exit = false;
     }
-  } while (actions.length === 0);
+    if (actions.length > 1 && actions.filter((p) => p.Definition).length) {
+      console.log(
+        "You can only choose one policy template and you can't mix policy templates and actions"
+      );
+      exit = false;
+    }
+  } while (!exit);
   return actions;
 }
 
@@ -156,8 +214,8 @@ async function selectService(template, suggestedServices, policies) {
     serviceName = await input.list(`Build statement for`, [
       suggestedServices.length
         ? new inquirer.Separator(
-          "--- Suggested services based on CloudFormation template ---"
-        )
+            "--- Suggested services based on CloudFormation template ---"
+          )
         : [],
       ...suggestedServices,
       new inquirer.Separator("--- All services ---"),

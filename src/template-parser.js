@@ -1,14 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 
-const intrinsicMap = JSON.parse(
-  // eslint-disable-next-line no-undef
-  fs
-    .readFileSync(
-      path.resolve(__dirname, "..", "data", "cfn-return-values.json")
-    )
-    .toString()
-);
+const intrinsicMap = require("../data/cfn-return-values.json");
+const cfnSchema = require("../data/us-east-1.json");
 
 function translateSAMResourceType(resourceType) {
   switch (resourceType) {
@@ -57,7 +51,7 @@ function suggestedServices(template, allServices) {
   return Array.from(new Set(list)).sort((a, b) => (a.name > b.name ? 1 : -1));
 }
 
-function getRefResolver(resourceType, resourceName) {
+function getRefResolver2(resourceType, resourceName) {
   const type =
     intrinsicMap[
       translateSAMResourceType(resourceType.replace(/\[(.+)\]/, "$1"))
@@ -74,8 +68,28 @@ function getRefResolver(resourceType, resourceName) {
   return null;
 }
 
+function getRefResolver(resourceType, resourceName) {
+  const type =
+    cfnSchema.ResourceTypes[
+      translateSAMResourceType(resourceType.replace(/\[(.+)\]/, "$1"))
+    ];
+
+  if (type.Attributes) {
+    for (const attribute of Object.keys(type.Attributes).sort(
+      (a, b) => a.length - b.length
+    )) {
+      if (attribute.includes("Arn")) {
+        return { "Fn::GetAtt": [resourceName, attribute] };
+      }
+    }
+  }
+
+  return { Ref: resourceName };
+}
+
 module.exports = {
   getResources,
   getRefResolver,
+  getRefResolver2,
   suggestedServices,
 };

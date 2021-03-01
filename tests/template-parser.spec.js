@@ -1,21 +1,28 @@
 const parser = require("../src/template-parser");
 const fs = require("fs");
 const path = require("path");
-const doc = JSON.parse(
-  fs.readFileSync(path.join(__dirname, "../data/policies.json")).toString()
-);
+const policies = require("../data/policies.json");
 const template = JSON.parse(
   fs.readFileSync(path.join(__dirname, "./input/template.json")).toString()
 );
 
 test("Get suggested services", async () => {
-  const services = parser.suggestedServices(template, doc.serviceMap);
+  const services = parser.suggestedServices(
+    template,
+    Object.keys(policies.serviceMap).map((p) => {
+      const item = policies.serviceMap[p];
+      const niceName = p.replace(/^AWS /, "").replace(/^Amazon /, "");
+      return {
+        name: niceName,
+        value: { ...item, name: niceName },
+      };
+    })
+  );
   expect(services.length).toBe(4);
-  expect(services).toContain("AWS Lambda");
-  expect(services).toContain("Amazon DynamoDB");
-  expect(services).toContain("Amazon SNS");
-  expect(services).toContain("Amazon SQS");
-  console.log(services);
+  expect(services.map((p) => p.name)).toContain("Lambda");
+  expect(services.map((p) => p.name)).toContain("DynamoDB");
+  expect(services.map((p) => p.name)).toContain("SNS");
+  expect(services.map((p) => p.name)).toContain("SQS");
 });
 
 test("Get suggestions for CFN resource", async () => {
@@ -44,10 +51,7 @@ test("Get ARN resolver for DynamoDB should be GetAtt", async () => {
 });
 
 test("Get ARN resolver for SNS should be Ref", async () => {
-  const response = parser.getRefResolver(
-    "AWS::SNS::Topic",
-    "ResourceName"
-  );
+  const response = parser.getRefResolver("AWS::SNS::Topic", "ResourceName");
   expect(response["Ref"]).not.toBeNull();
   expect(response["Ref"]).toEqual("ResourceName", "Arn");
 });
@@ -61,7 +65,7 @@ test("Get ARN resolver for SAM resource should resolve to CFN type - AWS::Server
     "AWS::Lambda::Function",
     "ResourceName"
   );
-  
+
   expect(samResponse).toEqual(cfnResponse);
 });
 
@@ -74,15 +78,15 @@ test("Get ARN resolver for SAM resource should resolve to CFN type - AWS::Server
     "AWS::DynamoDB::Table",
     "ResourceName"
   );
-  
+
   expect(samResponse).toEqual(cfnResponse);
 });
 
-test("Get ARN resolver for SAM resource that doesn't return ARN", async () => {
+test("Default non-existing Arn attribute to Ref", async () => {
   const cfnResponse = parser.getRefResolver(
     "AWS::ApiGateway::GatewayResponse",
     "ResourceName"
   );
   console.log(cfnResponse);
-  expect(cfnResponse).toBeNull();
+  expect(cfnResponse).toEqual({ Ref: "ResourceName" });
 });
