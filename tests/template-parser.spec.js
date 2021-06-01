@@ -18,7 +18,7 @@ test("Get suggested services", async () => {
       };
     })
   );
-  expect(services.length).toBe(4);
+  expect(services.length).toBe(5);
   expect(services.map((p) => p.name)).toContain("Lambda");
   expect(services.map((p) => p.name)).toContain("DynamoDB");
   expect(services.map((p) => p.name)).toContain("SNS");
@@ -29,7 +29,7 @@ test("Get suggestions for CFN resource", async () => {
   const services = parser.getResources(template, "dynamodb");
   console.log(services);
   expect(services.matching.length).toBe(2);
-  expect(services.all.length).toBe(3);
+  expect(services.all.length).toBe(4);
   expect(services.matching).toContain("[AWS::DynamoDB::Table] DynamoDBTable1");
   expect(services.matching).toContain("[AWS::DynamoDB::Table] DynamoDBTable2");
 });
@@ -38,7 +38,7 @@ test("Get suggestions for CFN resource that doesn't extist", async () => {
   const services = parser.getResources(template, "balloon");
   console.log(services);
   expect(services.matching.length).toBe(0);
-  expect(services.all.length).toBe(5);
+  expect(services.all.length).toBe(6);
 });
 
 test("Get ARN resolver for DynamoDB should be GetAtt", async () => {
@@ -89,4 +89,58 @@ test("Default non-existing Arn attribute to Ref", async () => {
   );
   console.log(cfnResponse);
   expect(cfnResponse).toEqual({ Ref: "ResourceName" });
+});
+
+test("Add policy document to no-existing array", async () => {
+  const resource = {
+    Type: "AWS::Serverless::Function",
+    PoliciesPath: "$.Resources.#ResourceName#.Properties.Policies",
+    Document: {
+      Version: "2012-10-17",
+      Statement: [
+        {
+          Sid: "Statement1",
+          Effect: "Allow",
+          Action: ["appconfig:CreateApplication"],
+          Resource: [""],
+        },
+      ],
+    },
+  };
+  const newTemplate = await parser.merge(template, {
+    name: "Function",
+    value: resource,
+  });
+  expect(newTemplate.Resources.Function.Properties.Policies[0]).toEqual(
+    resource.Document
+  );
+});
+
+test("Add policy document to existing AWS::IAM::Role", async () => {
+  const resource = {
+    Type: "AWS::IAM::Role",
+    PoliciesPath: "$.Resources.#ResourceName#.Properties.Policies",
+    Document: {
+      PolicyName: "test",
+      PolicyDocument: {
+        Version: "2012-10-17",
+        Statement: [
+          {
+            Sid: "Statement1",
+            Effect: "Allow",
+            Action: ["appconfig:CreateApplication"],
+            Resource: ["*"],
+          },
+        ],
+      },
+    },
+  };
+  const newTemplate = await parser.merge(template, {
+    name: "IAMRole",
+    value: resource,
+  });
+  console.log(JSON.stringify(newTemplate, null, 2));
+  expect(newTemplate.Resources.IAMRole.Properties.Policies[1]).toEqual(
+    resource.Document
+  );
 });

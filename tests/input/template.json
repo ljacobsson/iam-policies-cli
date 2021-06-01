@@ -1,20 +1,40 @@
 {
-    "AWSTemplateFormatVersion": "2010-09-09",
-    "Resources": {
-        "Function": {
-            "Type": "AWS::Serverless::Function"
-        },
-        "DynamoDBTable1": {
-            "Type": "AWS::DynamoDB::Table"
-        },
-        "DynamoDBTable2": {
-            "Type": "AWS::DynamoDB::Table"
-        },
-        "SNSTopic": {
-            "Type": "AWS::SNS::Topic"
-        },
-        "SQSQueue": {
-            "Type": "AWS::SQS::Queue"
-        }
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources": {
+    "Function": {
+      "Type": "AWS::Serverless::Function"
+    },
+    "DynamoDBTable1": {
+      "Type": "AWS::DynamoDB::Table"
+    },
+    "DynamoDBTable2": {
+      "Type": "AWS::DynamoDB::Table"
+    },
+    "SNSTopic": {
+      "Type": "AWS::SNS::Topic"
+    },
+    "SQSQueue": {
+      "Type": "AWS::SQS::Queue"
+    },
+    "IAMRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "Policies": [
+          {
+            "PolicyName": "root",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": "*",
+                  "Resource": "*"
+                }
+              ]
+            }
+          }
+        ]
+      }
     }
+  }
 }

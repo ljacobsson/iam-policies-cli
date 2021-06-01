@@ -15,7 +15,10 @@ async function getSAMResources(resource) {
       actions = [actions];
     }
     if (actions.filter((p) => p.startsWith(servicePrefix)).length) {
-      suggestions.push({ name: templateName, value: {name: templateName, ...template }});
+      suggestions.push({
+        name: templateName,
+        value: { name: templateName, ...template },
+      });
     }
   }
   return suggestions;
@@ -27,24 +30,22 @@ async function buildParameters(parameterKeys, resourceType, resourceName) {
     const intrinsicFunctionKey = `${resourceType}:${parameterKey}`;
     const funcResponse = intrinsicFunctionsMap.get(intrinsicFunctionKey);
     parameters[parameterKey] = {};
-      funcResponse.func.splice(1, 0, resourceName);
-      const func = funcResponse.func.shift();
-      parameters[parameterKey][func] =
-        funcResponse.func.length === 1
-          ? funcResponse.func[0]
-          : funcResponse.func;
+    funcResponse.func.splice(1, 0, resourceName);
+    const func = funcResponse.func.shift();
+    parameters[parameterKey][func] =
+      funcResponse.func.length === 1 ? funcResponse.func[0] : funcResponse.func;
   }
   return parameters;
 }
 
 function getLambdaFunctions(template) {
   return Object.keys(template.Resources)
-    .filter(p => template.Resources[p].Type === "AWS::Serverless::Function")
+    .filter((p) => template.Resources[p].Type === "AWS::Serverless::Function")
     .sort();
 }
 
 module.exports = {
   getSAMResources,
   buildParameters,
-  getLambdaFunctions
+  getLambdaFunctions,
 };

@@ -6,6 +6,8 @@ Provide an optional SAM or CloudFormation template and it will let you reference
 
 The mapping of CloudFormation resource type -> the intrinsic function that returns the ARN is based on the [cfn-lint schema for us-east-1](https://github.com/aws-cloudformation/cfn-python-lint/blob/master/src/cfnlint/data/CloudSpecs/us-east-1.json)
 
+New in v1.0.3 - you can now merge polices back to your template. Suppoerted resources are `AWS::Serverless::Function`, `AWS::Serverless::StateMachine`, `AWS::IAM::Role`
+
 ## Installation
 `npm install -g @mhlabs/iam-policies-cli`
 

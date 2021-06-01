@@ -7,12 +7,13 @@ const fs = require("fs");
 const YAML = require("./yaml-wrapper");
 const clipboard = require("clipboardy");
 const samProvider = require("./sam-provider");
-let templateFormat;
-async function start(templatePath, format, output) {
+let templateFormat, serializer, templatePath;
+async function start(templateInputPath, format, output) {
+  templatePath = templateInputPath;
   let template = getTemplate(templatePath);
   format = templateFormat || format;
-  const serializer = format.toLowerCase().startsWith("y") ? YAML : JSON;
-  let policies = await getPolices();
+  serializer = format.toLowerCase().startsWith("y") ? YAML : JSON;
+  let policies = await getPolicies();
 
   const suggestedServices = templateParser.suggestedServices(
     template,
@@ -109,8 +110,71 @@ async function start(templatePath, format, output) {
       break;
     }
 
-    addStatement = await input.list("Please select", ["Add statement", "done"]);
-  } while (addStatement !== "done");
+    addStatement = await input.list("Please select", ["Add statement", "Done"]);
+  } while (addStatement !== "Done");
+
+  const outputDirection = await input.list(
+    "Send output to",
+    [template ? "Template resource" : null, "Clipboard", "Stdout"].filter(
+      (p) => p
+    )
+  );
+
+  if (outputDirection === "Template resource") {
+    mergeWithTemplate(template, document);
+  }
+
+  if (outputDirection === "Clipboard") {
+    clipboard.writeSync(serializer.stringify(document, null, 2));
+  }
+}
+
+async function mergeWithTemplate(template, document) {
+  const supportedResources = [
+    {
+      ResourceType: "AWS::Serverless::Function",
+      PoliciesPath: "$.Resources.#ResourceName#.Properties.Policies",
+      Document: document,
+      SAMResource: true,
+    },
+    {
+      ResourceType: "AWS::Serverless::StateMachine",
+      PoliciesPath: "$.Resources.#ResourceName#.Properties.Policies",
+      Document: document,
+      SAMResource: true,
+    },
+    {
+      ResourceType: "AWS::IAM::Role",
+      PoliciesPath: "$.Resources.#ResourceName#.Properties.Policies",
+      Document: {
+        PolicyName: "iam-pol-generated-" + new Date().getTime(),
+        PolicyDocument: document,
+      },
+    },
+  ];
+  let resources = Object.keys(template.Resources)
+    .filter((p) =>
+      supportedResources
+        .map((p) => p.ResourceType)
+        .includes(template.Resources[p].Type)
+    )
+    .map((p) => {
+      return {
+        name: p,
+        value: {
+          name: p,
+          value: supportedResources.filter(
+            (q) => q.ResourceType === template.Resources[p].Type
+          )[0],
+        },
+      };
+    });
+  if (!Object.keys(document).includes("Version")) {
+    resources = resources.filter((p) => p.value.value.SAMResource);
+  }
+  const resource = await input.list("Add to resource", resources);
+  const newTemplate = templateParser.merge(template, resource, document);
+  saveTemplate(newTemplate);
 }
 
 async function selectConditions(conditions, policies, selectedService) {
@@ -227,7 +291,7 @@ async function selectService(template, suggestedServices, policies) {
   return serviceName;
 }
 
-async function getPolices() {
+async function getPolicies() {
   const policiesResponse = await axios.get(
     "https://awspolicygen.s3.amazonaws.com/js/policies.js"
   );
@@ -261,6 +325,12 @@ function getTemplate(templatePath) {
   return template;
 }
 
+function saveTemplate(template) {
+  fs.writeFileSync(
+    templatePath,
+    serializer.stringify(JSON.parse(JSON.stringify(template)), null, 2)
+  );
+}
 module.exports = {
   start,
 };

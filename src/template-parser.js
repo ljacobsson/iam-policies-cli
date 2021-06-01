@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-
+var jp = require('jsonpath');
 const intrinsicMap = require("../data/cfn-return-values.json");
 const cfnSchema = require("../data/us-east-1.json");
 
@@ -87,9 +87,19 @@ function getRefResolver(resourceType, resourceName) {
   return { Ref: resourceName };
 }
 
+function merge(template, resource) {
+  const jsonPath = resource.value.PoliciesPath.replace("#ResourceName#", resource.name);
+  const array = jp.query(template, jsonPath);
+  const policies = (array || [[]])[0] || [];
+  policies.push(resource.value.Document);
+  jp.value(template, jsonPath, policies);  
+  return template;
+}
+
 module.exports = {
   getResources,
   getRefResolver,
   getRefResolver2,
   suggestedServices,
+  merge
 };

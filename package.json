@@ -1,6 +1,6 @@
 {
   "name": "@mhlabs/iam-policies-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A CLI tool for building simple to complex IAM policies",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "commander": "^4.1.1",
     "inquirer": "^7.0.4",
     "inquirer-autocomplete-prompt": "^1.3.0",
-    "path": "^0.12.7",
+    "jsonpath": "^1.1.1",
     "yaml-cfn": "^0.2.3"
   },
   "bugs": {
