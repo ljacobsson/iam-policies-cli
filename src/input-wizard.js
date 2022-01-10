@@ -227,7 +227,7 @@ async function inputArn(template, selectedService, lastARN, resources) {
     arn = arn || (await input.text("Input ARN", lastARN));
     const regexp = RegExp(selectedService.ARNRegex);
     let addArn = true;
-    if (!isTemplateResource && !regexp.test(arn)) {
+    if (!isTemplateResource && !regexp.test(arn) && arn !== "*") {
       addArn = await input.confirm("Invalid ARN. Add anyway?");
     }
     if (addArn) {
