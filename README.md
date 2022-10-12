@@ -6,7 +6,9 @@ Provide an optional SAM or CloudFormation template and it will let you reference
 
 The mapping of CloudFormation resource type -> the intrinsic function that returns the ARN is based on the [cfn-lint schema for us-east-1](https://github.com/aws-cloudformation/cfn-python-lint/blob/master/src/cfnlint/data/CloudSpecs/us-east-1.json)
 
-New in v1.0.5 - support for AWS::Serverless::Connectors
+### :tada: New in v1.0.5 - support for AWS::Serverless::Connectors
+If you point a SAM template to this tool it will suggest connectable resources and let you generate the `AWS::Serverless::Connector` resource
+![Demo](https://github.com/mhlabs/iam-policies-cli/blob/master/images/demo-connectors.gif?raw=true)
 
 ## Installation
 `npm install -g @mhlabs/iam-policies-cli`
