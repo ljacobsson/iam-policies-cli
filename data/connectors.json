@@ -1,0 +1,252 @@
+{
+  "AWS::ApiGateway::RestApi": {
+    "AWS::Lambda::Function": [
+      "Write"
+    ],
+    "AWS::Serverless::Function": [
+      "Write"
+    ]
+  },
+  "AWS::ApiGatewayV2::Api": {
+    "AWS::Lambda::Function": [
+      "Write"
+    ],
+    "AWS::Serverless::Function": [
+      "Write"
+    ]
+  },
+  "AWS::DynamoDB::Table": {
+    "AWS::Lambda::Function": [
+      "Read"
+    ],
+    "AWS::Serverless::Function": [
+      "Read"
+    ]
+  },
+  "AWS::Events::Rule": {
+    "AWS::Events::EventBus": [
+      "Write"
+    ],
+    "AWS::Lambda::Function": [
+      "Write"
+    ],
+    "AWS::Serverless::Function": [
+      "Write"
+    ],
+    "AWS::Serverless::StateMachine": [
+      "Write"
+    ],
+    "AWS::SNS::Topic": [
+      "Write"
+    ],
+    "AWS::SQS::Queue": [
+      "Write"
+    ],
+    "AWS::StepFunctions::StateMachine": [
+      "Write"
+    ]
+  },
+  "AWS::Lambda::Function": {
+    "AWS::DynamoDB::Table": [
+      "Read",
+      "Write"
+    ],
+    "AWS::Events::EventBus": [
+      "Write"
+    ],
+    "AWS::Lambda::Function": [
+      "Write"
+    ],
+    "AWS::S3::Bucket": [
+      "Read",
+      "Write"
+    ],
+    "AWS::Serverless::Function": [
+      "Write"
+    ],
+    "AWS::Serverless::SimpleTable": [
+      "Read",
+      "Write"
+    ],
+    "AWS::Serverless::StateMachine": [
+      "Read",
+      "Write"
+    ],
+    "AWS::SNS::Topic": [
+      "Write"
+    ],
+    "AWS::SQS::Queue": [
+      "Read",
+      "Write"
+    ],
+    "AWS::StepFunctions::StateMachine": [
+      "Read",
+      "Write"
+    ]
+  },
+  "AWS::S3::Bucket": {
+    "AWS::Lambda::Function": [
+      "Write"
+    ],
+    "AWS::Serverless::Function": [
+      "Write"
+    ]
+  },
+  "AWS::Serverless::Api": {
+    "AWS::Lambda::Function": [
+      "Write"
+    ],
+    "AWS::Serverless::Function": [
+      "Write"
+    ]
+  },
+  "AWS::Serverless::Function": {
+    "AWS::DynamoDB::Table": [
+      "Read",
+      "Write"
+    ],
+    "AWS::Events::EventBus": [
+      "Write"
+    ],
+    "AWS::Lambda::Function": [
+      "Write"
+    ],
+    "AWS::S3::Bucket": [
+      "Read",
+      "Write"
+    ],
+    "AWS::Serverless::Function": [
+      "Write"
+    ],
+    "AWS::Serverless::SimpleTable": [
+      "Read",
+      "Write"
+    ],
+    "AWS::Serverless::StateMachine": [
+      "Read",
+      "Write"
+    ],
+    "AWS::SNS::Topic": [
+      "Write"
+    ],
+    "AWS::SQS::Queue": [
+      "Read",
+      "Write"
+    ],
+    "AWS::StepFunctions::StateMachine": [
+      "Read",
+      "Write"
+    ]
+  },
+  "AWS::Serverless::HttpApi": {
+    "AWS::Lambda::Function": [
+      "Write"
+    ],
+    "AWS::Serverless::Function": [
+      "Write"
+    ]
+  },
+  "AWS::Serverless::SimpleTable": {
+    "AWS::Lambda::Function": [
+      "Read"
+    ],
+    "AWS::Serverless::Function": [
+      "Read"
+    ]
+  },
+  "AWS::Serverless::StateMachine": {
+    "AWS::DynamoDB::Table": [
+      "Read",
+      "Write"
+    ],
+    "AWS::Events::EventBus": [
+      "Write"
+    ],
+    "AWS::Lambda::Function": [
+      "Write"
+    ],
+    "AWS::S3::Bucket": [
+      "Read",
+      "Write"
+    ],
+    "AWS::Serverless::Function": [
+      "Write"
+    ],
+    "AWS::Serverless::SimpleTable": [
+      "Read",
+      "Write"
+    ],
+    "AWS::Serverless::StateMachine": [
+      "Read",
+      "Write"
+    ],
+    "AWS::SNS::Topic": [
+      "Write"
+    ],
+    "AWS::SQS::Queue": [
+      "Write"
+    ],
+    "AWS::StepFunctions::StateMachine": [
+      "Read",
+      "Write"
+    ]
+  },
+  "AWS::SNS::Topic": {
+    "AWS::Lambda::Function": [
+      "Write"
+    ],
+    "AWS::Serverless::Function": [
+      "Write"
+    ],
+    "AWS::SQS::Queue": [
+      "Write"
+    ]
+  },
+  "AWS::SQS::Queue": {
+    "AWS::Lambda::Function": [
+      "Read",
+      "Write"
+    ],
+    "AWS::Serverless::Function": [
+      "Read",
+      "Write"
+    ]
+  },
+  "AWS::StepFunctions::StateMachine": {
+    "AWS::DynamoDB::Table": [
+      "Read",
+      "Write"
+    ],
+    "AWS::Events::EventBus": [
+      "Write"
+    ],
+    "AWS::Lambda::Function": [
+      "Write"
+    ],
+    "AWS::S3::Bucket": [
+      "Read",
+      "Write"
+    ],
+    "AWS::Serverless::Function": [
+      "Write"
+    ],
+    "AWS::Serverless::SimpleTable": [
+      "Read",
+      "Write"
+    ],
+    "AWS::Serverless::StateMachine": [
+      "Read",
+      "Write"
+    ],
+    "AWS::SNS::Topic": [
+      "Write"
+    ],
+    "AWS::SQS::Queue": [
+      "Write"
+    ],
+    "AWS::StepFunctions::StateMachine": [
+      "Read",
+      "Write"
+    ]
+  }
+}

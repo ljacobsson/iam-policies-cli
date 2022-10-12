@@ -1,5 +1,5 @@
-const fs = require("fs");
-const path = require("path");
+/* eslint-disable no-undef */
+const connectors = require("../data/connectors.json");
 var jp = require('jsonpath');
 const intrinsicMap = require("../data/cfn-return-values.json");
 const cfnSchema = require("../data/us-east-1.json");
@@ -54,7 +54,7 @@ function suggestedServices(template, allServices) {
 function getRefResolver2(resourceType, resourceName) {
   const type =
     intrinsicMap[
-      translateSAMResourceType(resourceType.replace(/\[(.+)\]/, "$1"))
+    translateSAMResourceType(resourceType.replace(/\[(.+)\]/, "$1"))
     ];
 
   if (type.Ref && type.Ref.includes("Arn")) {
@@ -71,7 +71,7 @@ function getRefResolver2(resourceType, resourceName) {
 function getRefResolver(resourceType, resourceName) {
   const type =
     cfnSchema.ResourceTypes[
-      translateSAMResourceType(resourceType.replace(/\[(.+)\]/, "$1"))
+    translateSAMResourceType(resourceType.replace(/\[(.+)\]/, "$1"))
     ];
 
   if (type.Attributes) {
@@ -92,8 +92,34 @@ function merge(template, resource) {
   const array = jp.query(template, jsonPath);
   const policies = (array || [[]])[0] || [];
   policies.push(resource.value.Document);
-  jp.value(template, jsonPath, policies);  
+  jp.value(template, jsonPath, policies);
   return template;
+}
+
+function getConnectableResources(template) {
+  const resources = [];
+  for (const resource in template.Resources) {
+    if (Object.keys(connectors).includes(template.Resources[resource].Type)) {
+      resources.push({
+        name: resource + " (" + template.Resources[resource].Type + ")",
+        value: { resource, type: "connector", resourceType: template.Resources[resource].Type },
+      });
+    }
+  }
+  return resources;
+}
+
+function getConnectorTarget(sourceType, template) {
+  const resources = [];
+  for (const resource in template.Resources) {
+    if (Object.keys(connectors[sourceType]).includes(template.Resources[resource].Type)) {
+      resources.push({
+        name: resource + " (" + template.Resources[resource].Type + ")",
+        value: {resource, type: "target", resourceType: template.Resources[resource].Type},
+      });
+    }
+  }
+  return resources;
 }
 
 module.exports = {
@@ -101,5 +127,7 @@ module.exports = {
   getRefResolver,
   getRefResolver2,
   suggestedServices,
-  merge
+  merge,
+  getConnectableResources,
+  getConnectorTarget,
 };
